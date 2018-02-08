@@ -1,0 +1,7 @@
+lang: ruby
+
+script: bundle exec rspec
+
+rvm: 2.3
+
+bundler_args: --with development
