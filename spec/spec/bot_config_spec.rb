@@ -2,10 +2,23 @@ require_relative '../spec_helper'
 
 describe 'Bot config' do
   let :config do
-    TwitterBot::BotConfig.new(999, {})
+    TwitterBot::BotConfig.new({'consumer_key' => 'ck', 'consumer_token' => 'ct', 'access_token' => 'at', 'access_token_secret' => 'ats'})
   end
 
-  it 'can tell its user_id' do
-    expect(config.user_id).to be 999
+  it 'can tell its consumer_key' do
+    expect(config.tokens['consumer_key']).to eq 'ck'
   end
+
+  it 'can tell its consumer_token' do
+    expect(config.tokens['consumer_token']).to eq 'ct'
+  end
+
+  it 'can tell its access_token' do
+    expect(config.tokens['access_token']).to eq 'at'
+  end
+
+  it 'can tell its access_token_secret' do
+    expect(config.tokens['access_token_secret']).to eq 'ats'
+  end
+
 end

@@ -1,8 +1,7 @@
 module TwitterBot
   class BotConfig
-    attr_reader :user_id
-    def initialize(user_id, tokens)
-      @user_id = user_id
+    attr_reader :tokens
+    def initialize(tokens)
       @tokens  = tokens
     end
   end
