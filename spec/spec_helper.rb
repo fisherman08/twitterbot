@@ -101,3 +101,7 @@ RSpec.configure do |config|
 end
 
 require_relative '../src/lib/twitterbot/twitter_bot'
+
+def test_config
+  {'consumer_key' => 'ck', 'consumer_token' => 'ct', 'access_token' => 'at', 'access_token_secret' => 'ats'}
+end
