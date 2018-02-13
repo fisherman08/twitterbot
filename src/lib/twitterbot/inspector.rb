@@ -32,7 +32,7 @@ module TwitterBot
       user        = raw_tweet.user
       tweet_id    = raw_tweet.id
 
-      unless text =~ /#{key}/ && in_reply_to == nil
+      unless text.match(/#{key}/) && in_reply_to.nil?
         return result
       end
 

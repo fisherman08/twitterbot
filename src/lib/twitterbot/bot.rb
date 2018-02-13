@@ -48,7 +48,7 @@ module TwitterBot
         # 自分のtweetは無視
         next if raw_tweet.user.id == user.id
         # RTは無視
-        next if raw_tweet.retweeted_status
+        next unless raw_tweet.retweeted_status.nil?
 
         result << raw_tweet
       end

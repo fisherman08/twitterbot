@@ -11,9 +11,9 @@ describe 'Bot object' do
 
   it 'can get timeline' do
     sample_timeline = [
-      dummy_tweet.new('収集の対象になるツイート', nil, dummy_tweet_user, 666, nil),
+      dummy_tweet.new('収集の対象になるツイート', nil, dummy_tweet_user, 666, Twitter::NullObject.new),
       dummy_tweet.new('RTだから無視されるツイート', nil, dummy_tweet_user, 667, {}),
-      dummy_tweet.new('自分のツイートだから無視される', nil, my_user, 668, nil)
+      dummy_tweet.new('自分のツイートだから無視される', nil, my_user, 668, Twitter::NullObject.new)
     ]
     twitter_client_mock = double('Twitter client')
     expect(twitter_client_mock).to receive(:home_timeline).and_return(sample_timeline)
@@ -25,7 +25,7 @@ describe 'Bot object' do
 
   it 'can inject' do
     twitter_client_mock = double('Twitter client')
-    expect(twitter_client_mock).to receive(:home_timeline).and_return([dummy_tweet.new('せんだ', nil, dummy_tweet_user, 666, nil)])
+    expect(twitter_client_mock).to receive(:home_timeline).and_return([dummy_tweet.new('せんだ', nil, dummy_tweet_user, 666, Twitter::NullObject.new)])
     expect(twitter_client_mock).to receive(:user).and_return(my_user)
     expect(twitter_client_mock).to receive(:update)
     allow(bot).to receive(:twitter_client).and_return(twitter_client_mock)

@@ -9,8 +9,8 @@ describe 'Bot config' do
     expect(config.tokens['consumer_key']).to eq 'ck'
   end
 
-  it 'can tell its consumer_token' do
-    expect(config.tokens['consumer_token']).to eq 'ct'
+  it 'can tell its consumer_secret' do
+    expect(config.tokens['consumer_secret']).to eq 'ct'
   end
 
   it 'can tell its access_token' do
