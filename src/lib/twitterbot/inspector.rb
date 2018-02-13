@@ -30,12 +30,13 @@ module TwitterBot
       text        = raw_tweet.text
       in_reply_to = raw_tweet.in_reply_to_status_id
       user        = raw_tweet.user
+      tweet_id    = raw_tweet.id
 
       unless text =~ /#{key}/ && in_reply_to == nil
         return result
       end
 
-      result << Tweet.new("@#{user.screen_name} #{reply_text}")
+      result << Tweet.new(text: "@#{user.screen_name} #{reply_text}", in_reply_to_status_id: tweet_id)
     end
   end
 end

@@ -105,3 +105,11 @@ require_relative '../src/lib/twitterbot/twitter_bot'
 def test_config
   {'consumer_key' => 'ck', 'consumer_token' => 'ct', 'access_token' => 'at', 'access_token_secret' => 'ats'}
 end
+
+def dummy_tweet_user
+  dummy_tweet_user = (Struct.new(:screen_name, :id)).new('dummy_man', 123456)
+end
+
+def dummy_tweet
+  Struct.new(:text, :in_reply_to_status_id, :user, :id, :retweeted_status)
+end

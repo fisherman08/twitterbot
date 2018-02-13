@@ -4,5 +4,9 @@ module TwitterBot
     def initialize(tokens)
       @tokens  = tokens
     end
+
+    def for_rest
+
+    end
   end
 end
