@@ -8,7 +8,9 @@ module TwitterBot
       @config    = BotConfig.new(config_infos)
       @inspector = Inspector.new
 
-      @tweets = []
+      @client   = nil
+      @timeline = nil
+      @tweets   = []
     end
 
     def tweet
@@ -32,15 +34,20 @@ module TwitterBot
     end
 
     def twitter_client
-      Twitter::REST::Client.new do |config|
+      return @client if @client
+
+      @client = Twitter::REST::Client.new do |config|
         config.consumer_key        = @config.tokens['consumer_key']
         config.consumer_secret     = @config.tokens['consumer_secret']
         config.access_token        = @config.tokens['access_token']
         config.access_token_secret = @config.tokens['access_token_secret']
       end
+
     end
 
     def home_timeline
+      return @timeline if @timeline
+
       result = []
       client = twitter_client
       user   = client.user
@@ -52,7 +59,7 @@ module TwitterBot
 
         result << raw_tweet
       end
-      result
+      @timeline = result
     end
 
   end
