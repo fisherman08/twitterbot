@@ -1,6 +1,10 @@
 module TwitterBot
   class Tweet
-    @text = ''
+
+    def initialize(text)
+      @text = text
+    end
+
 
     def tweet
       @text
