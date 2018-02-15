@@ -49,10 +49,12 @@ module TwitterBot
     def home_timeline
       return @timeline if @timeline
 
-      result = []
-      client = twitter_client
-      user   = client.user
-      client.home_timeline.each do |raw_tweet|
+      result         = []
+      client         = twitter_client
+      user           = client.user
+      last_status_id = last_status
+
+      client.home_timeline(since_id: last_status_id, include_rts: false).each do |raw_tweet|
         # 自分のtweetは無視
         next if raw_tweet.user.id == user.id
         # RTは無視
