@@ -1,6 +1,7 @@
 require_relative './bot_config'
 require_relative './inspector'
 require 'twitter'
+require 'yaml'
 
 module TwitterBot
   class Bot
@@ -61,6 +62,39 @@ module TwitterBot
       end
       @timeline = result
     end
+
+    # 最後に取得したツイートのIDを保存する
+    def save_status(status_id)
+      file = File.open(status_file_name, 'w' )
+      YAML.dump({last_status: status_id}, file)
+      file.close
+    end
+
+    # 最後の取得したツイートのIDを取得する
+    def last_status
+      file = status_file_name
+      return nil unless File.exist? file
+
+      data = YAML.load_file(status_file_name)
+      data[:last_status]
+    end
+
+    # 取得履歴を消す
+    def reset_status
+      file = status_file_name
+      File.delete(file) if File.exist? file
+    end
+
+    private
+    # 最後に取得したツイートのファイル名を取得
+    def status_file_name
+      user_id = twitter_client.user.id
+      dir = Dir.home + '/.twitterbot'
+      FileUtils.makedirs dir unless Dir.exist? dir
+
+      "#{dir}/#{user_id}.yml"
+    end
+
 
   end
 end
