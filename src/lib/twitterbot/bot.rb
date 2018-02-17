@@ -54,14 +54,20 @@ module TwitterBot
       user           = client.user
       last_status_id = last_status
 
-      client.home_timeline(since_id: last_status_id, include_rts: false).each do |raw_tweet|
+      options = {include_rts: false}
+      options[:since_id] = last_status_id if last_status_id
+
+      latest_id = nil
+      client.home_timeline(options).each do |raw_tweet|
         # 自分のtweetは無視
         next if raw_tweet.user.id == user.id
         # RTは無視
         next unless raw_tweet.retweeted_status.nil?
 
         result << raw_tweet
+        latest_id = raw_tweet.id
       end
+      save_status(latest_id)
       @timeline = result
     end
 
