@@ -17,8 +17,14 @@ module TwitterBot
       raw_tweets.each do |raw_tweet|
         @inspections.each do |inspection|
           if inspection[:type] == :injection
-            result += inspect_injection(raw_tweet, inspection[:key], inspection[:text])
+            inspected = inspect_injection(raw_tweet, inspection[:key], inspection[:text])
+
+            if inspected.size > 0
+              result += inspected
+              break
+            end
           end
+
         end
       end
       result
