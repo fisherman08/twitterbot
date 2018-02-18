@@ -1,5 +1,6 @@
 require_relative './bot_config'
 require_relative './inspector'
+require_relative './favoritor'
 require 'twitter'
 require 'yaml'
 
@@ -8,6 +9,7 @@ module TwitterBot
     def initialize(config_infos)
       @config    = BotConfig.new(config_infos)
       @inspector = Inspector.new
+      @favoritor = Favoritor.new
 
       @client   = nil
       @timeline = nil
