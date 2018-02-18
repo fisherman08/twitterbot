@@ -5,8 +5,5 @@ module TwitterBot
       @tokens  = tokens
     end
 
-    def for_rest
-
-    end
   end
 end
