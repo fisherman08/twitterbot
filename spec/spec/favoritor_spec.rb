@@ -6,14 +6,14 @@ describe 'Favoritor' do
   end
 
   it 'can append status_ids' do
-    favoritor.add(1)
-    favoritor << 2
+    favoritor.add({id: 1})
+    favoritor << {id: 2}
     expect(favoritor.favorites.size).to eq 2
   end
 
   it 'can exclude duplicated status_ids' do
-    favoritor.add(1)
-    favoritor.add(1)
+    favoritor.add({id: 1})
+    favoritor.add({id: 1})
     expect(favoritor.favorites.size).to eq 1
   end
 

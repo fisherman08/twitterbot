@@ -6,12 +6,12 @@ module TwitterBot
     end
 
 
-    def add(status_id)
-      @favs << status_id
+    def add(tweet)
+      @favs << tweet
     end
 
-    def << status_id
-      self.add(status_id)
+    def << tweet
+      self.add(tweet)
     end
 
     def favorites

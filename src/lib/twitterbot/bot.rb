@@ -20,10 +20,28 @@ module TwitterBot
       client = twitter_client
       count = 0
       @tweets.each do |tweet|
-        client.update(tweet.tweet, in_reply_to_status_id: tweet.in_reply_to)
-        count += 1
+        begin
+          client.update(tweet.tweet, in_reply_to_status_id: tweet.in_reply_to)
+          count += 1
+        rescue => e
+          next
+        end
       end
       count
+    end
+
+    def favorite
+      @favoritor.favorites.each do |tweet|
+        client = twitter_client
+        count = 0
+        begin
+          client.fav(tweet)
+          count += 1
+        rescue => e
+          next
+        end
+        count
+      end
     end
 
     def regist_inspection(inspections)
