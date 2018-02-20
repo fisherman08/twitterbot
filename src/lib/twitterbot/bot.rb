@@ -50,6 +50,10 @@ module TwitterBot
       end
     end
 
+    def regist_favorite
+
+    end
+
     def inspect
       @tweets = @inspector.inspect(home_timeline)
     end

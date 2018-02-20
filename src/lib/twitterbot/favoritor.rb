@@ -5,6 +5,9 @@ module TwitterBot
       @favs = []
     end
 
+    def regist_keys
+      
+    end
 
     def add(tweet)
       @favs << tweet
