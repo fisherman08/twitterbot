@@ -3,13 +3,24 @@ module TwitterBot
 
     def initialize()
       @favs = []
+      @keys = []
     end
 
-    def regist_keys
-      
+    def regist_keys(keys)
+      if keys.is_a? Array
+        @keys += keys
+      else
+        @keys += [keys.to_s]
+      end
+    end
+
+    def key_size
+      @keys.size
     end
 
     def add(tweet)
+
+      #TODO fav対象のツイートだけ追加する
       @favs << tweet
     end
 

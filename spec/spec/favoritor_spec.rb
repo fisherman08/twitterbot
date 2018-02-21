@@ -17,5 +17,12 @@ describe 'Favoritor' do
     expect(favoritor.favorites.size).to eq 1
   end
 
+  it 'can regist keys' do
+    favoritor.regist_keys(['hoge', 'fuga'])
+    favoritor.regist_keys('nerima')
+
+    expect(favoritor.key_size). to eq 3
+  end
+
 
 end
