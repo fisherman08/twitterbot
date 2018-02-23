@@ -21,7 +21,15 @@ module TwitterBot
     def add(tweet)
 
       #TODO fav対象のツイートだけ追加する
-      @favs << tweet
+      ((tweet.is_a? Array)? tweet : [tweet]).each do |t|
+        @keys.each do |key|
+          if t.text.match(/#{key}/)
+            @favs << t
+            break
+          end
+        end
+
+      end
     end
 
     def << tweet
