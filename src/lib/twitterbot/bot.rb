@@ -50,8 +50,10 @@ module TwitterBot
       end
     end
 
-    def regist_favorite
-
+    def regist_favorite(favorites)
+      favorites.each do |fav|
+        @favoritor.regist_keys(fav)
+      end
     end
 
     def inspect

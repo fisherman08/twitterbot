@@ -8,6 +8,7 @@ begin
   configs[:rest].each do |client|
     bot = TwitterBot::Bot.new(client[:keys])
     bot.regist_inspection(client[:inspection])
+    bot.regist_favorite(client[:favorites])
     bot.inspect
     bot.tweet
   end

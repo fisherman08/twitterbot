@@ -7,3 +7,7 @@
       :inspection:
         - key: "hoge"
           text: "fuga"
+      :favorites:
+        - key: "あいうえお"
+        - key: "カキクケコ"
+    　
