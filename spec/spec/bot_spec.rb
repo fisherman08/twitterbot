@@ -39,6 +39,21 @@ describe 'Bot object' do
     expect(bot.tweet).to eq 1
   end
 
+  it 'can fav' do
+    expect(twitter_client_mock).to receive(:home_timeline).and_return(
+      [
+        dummy_tweet.new('せんだ', nil, dummy_tweet_user, 666, Twitter::NullObject.new),
+        dummy_tweet.new('みつお', nil, dummy_tweet_user, 667, Twitter::NullObject.new),
+        dummy_tweet.new('ナハナハ', nil, dummy_tweet_user, 668, Twitter::NullObject.new)
+      ]
+    )
+    expect(twitter_client_mock).to receive(:fav).exactly(2).times
+
+    bot.regist_favorite(['せんだ', 'みつお'])
+    result = bot.favorite
+    expect(result).to eq 2
+  end
+
   it 'can save and read the status id read already' do
     bot.reset_status
     bot.save_status(123456)

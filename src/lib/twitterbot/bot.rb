@@ -31,9 +31,10 @@ module TwitterBot
     end
 
     def favorite
+      client = twitter_client
+      count = 0
+      @favoritor.add(home_timeline)
       @favoritor.favorites.each do |tweet|
-        client = twitter_client
-        count = 0
         begin
           client.fav(tweet)
           count += 1
@@ -42,6 +43,7 @@ module TwitterBot
         end
         count
       end
+      count
     end
 
     def regist_inspection(inspections)
