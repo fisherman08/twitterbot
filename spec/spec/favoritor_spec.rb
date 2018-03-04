@@ -15,12 +15,14 @@ describe 'Favoritor' do
 
   it 'can fav tweets matched to keys' do
     favoritor.regist_keys(['hoge'])
+    favoritor.regist_keys('single')
     favoritor.add(
       [dummy_tweet.new('hoge', nil, dummy_tweet_user, 666),
        dummy_tweet.new('fuga', nil, dummy_tweet_user, 667),
-       dummy_tweet.new('hoge', nil, dummy_tweet_user, 667)]
+       dummy_tweet.new('hoge', nil, dummy_tweet_user, 667),
+       dummy_tweet.new('single', nil, dummy_tweet_user, 668)]
     )
-    expect(favoritor.favorites.size).to eq 2
+    expect(favoritor.favorites.size).to eq 3
   end
 
 
