@@ -31,7 +31,10 @@ describe 'Bot object' do
   end
 
   it 'can inject' do
-    expect(twitter_client_mock).to receive(:home_timeline).and_return([dummy_tweet.new('せんだ', nil, dummy_tweet_user, 666, Twitter::NullObject.new)])
+    expect(twitter_client_mock).to receive(:home_timeline).and_return([
+                                                                        dummy_tweet.new('せんだ', nil, dummy_tweet_user, 666, Twitter::NullObject.new),
+                                                                        dummy_tweet.new('ナハナハ', nil, dummy_tweet_user, 667, Twitter::NullObject.new)
+                                                                      ])
     expect(twitter_client_mock).to receive(:update)
 
     bot.regist_inspection([{'key' => 'せんだ', 'text' => 'みつお'}])
