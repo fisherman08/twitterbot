@@ -52,7 +52,8 @@ describe 'Bot object' do
     )
     expect(twitter_client_mock).to receive(:fav).exactly(2).times
 
-    bot.regist_favorite(['せんだ', 'みつお'])
+    bot.regist_favorite(['せんだ', 'みつを'])
+    bot.regist_favorite('みつお')
     result = bot.favorite
     expect(result).to eq 2
   end

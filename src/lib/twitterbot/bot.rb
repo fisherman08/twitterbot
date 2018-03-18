@@ -53,6 +53,7 @@ module TwitterBot
     end
 
     def regist_favorite(favorites)
+      favorites = (favorites.is_a? Array)? favorites : [favorites]
       favorites.each do |fav|
         @favoritor.regist_keys(fav)
       end
