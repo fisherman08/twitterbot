@@ -30,6 +30,7 @@ module TwitterBot
       count
     end
 
+    # いいねを実行
     def favorite
       client = twitter_client
       count = 0
@@ -46,6 +47,7 @@ module TwitterBot
       count
     end
 
+    # ツイート監視のキーを登録する
     def regist_inspection(inspections)
       inspections.each do |inspection|
         @inspector.regist(:injection, inspection['key'], inspection['text'])
@@ -59,6 +61,7 @@ module TwitterBot
       end
     end
 
+    # ツイート監視を実行
     def inspect
       @tweets = @inspector.inspect(home_timeline)
     end
