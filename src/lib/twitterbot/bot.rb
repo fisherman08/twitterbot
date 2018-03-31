@@ -49,6 +49,7 @@ module TwitterBot
 
     # ツイート監視のキーを登録する
     def regist_inspection(inspections)
+      inspections = (inspections.is_a? Array)? inspections : [inspections]
       inspections.each do |inspection|
         @inspector.regist(:injection, inspection['key'], inspection['text'])
       end

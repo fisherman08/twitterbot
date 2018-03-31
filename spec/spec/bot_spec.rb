@@ -35,11 +35,12 @@ describe 'Bot object' do
                                                                         dummy_tweet.new('せんだ', nil, dummy_tweet_user, 666, Twitter::NullObject.new),
                                                                         dummy_tweet.new('ナハナハ', nil, dummy_tweet_user, 667, Twitter::NullObject.new)
                                                                       ])
-    expect(twitter_client_mock).to receive(:update)
+    expect(twitter_client_mock).to receive(:update).twice
 
     bot.regist_inspection([{'key' => 'せんだ', 'text' => 'みつお'}])
+    bot.regist_inspection({'key' => 'ナハナハ', 'text' => 'みつお'})
     bot.inspect
-    expect(bot.tweet).to eq 1
+    expect(bot.tweet).to eq 2
   end
 
   it 'can fav' do
