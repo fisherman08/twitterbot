@@ -79,7 +79,9 @@ module TwitterBot
 
     end
 
+    # ホームタイムラインを取得する
     def home_timeline
+      # 取得済みならキャッシュを返す
       return @timeline if @timeline
 
       result         = []
@@ -100,7 +102,10 @@ module TwitterBot
         result << raw_tweet
         latest_id = raw_tweet.id
       end
+      # 最後に取得したstatus_idを保存
       save_status(latest_id)
+
+      # 取得したタイムラインはキャッシュしておく
       @timeline = result
     end
 
