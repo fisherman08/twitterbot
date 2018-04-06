@@ -20,7 +20,9 @@ describe 'Favoritor' do
       [dummy_tweet.new('hoge', nil, dummy_tweet_user, 666),
        dummy_tweet.new('fuga', nil, dummy_tweet_user, 667),
        dummy_tweet.new('hoge', nil, dummy_tweet_user, 667),
-       dummy_tweet.new('single', nil, dummy_tweet_user, 668)]
+       dummy_tweet.new('single', nil, dummy_tweet_user, 668),
+       dummy_tweet.new('double', nil, dummy_tweet_user, 669),
+      ]
     )
     expect(favoritor.favorites.size).to eq 3
   end
